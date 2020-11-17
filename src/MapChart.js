@@ -41,21 +41,28 @@ const MapChart = ({ setTooltipContent }) => {
                     key={geo.rsmKey}
                     geography={geo}
                     onMouseEnter={() => {
-                      // console.log(d ? d : "no data");
                       const { NAME } = geo.properties;
                       const { Info1, Info2, Info3 } = d
                         ? d
-                        : { Info1: "no data", Info2: "", Info3: "" };
-                      setTooltipContent(
-                        "Country: " +
+                        : {
+                            Info1: "no data",
+                            Info2: "no data",
+                            Info3: "no data"
+                          };
+
+                      let tooltipContent = "";
+                      if (d) {
+                        tooltipContent =
+                          "Country: " +
                           NAME +
                           "<br>Info 1: " +
                           Info1 +
                           "<br>Info 2: " +
                           Info2 +
                           "<br>Info 3: " +
-                          Info3
-                      );
+                          Info3;
+                      }
+                      setTooltipContent(tooltipContent);
                     }}
                     onMouseLeave={() => {
                       setTooltipContent("");
