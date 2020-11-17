@@ -42,16 +42,10 @@ const MapChart = ({ setTooltipContent }) => {
                     geography={geo}
                     onMouseEnter={() => {
                       const { NAME } = geo.properties;
-                      const { Info1, Info2, Info3 } = d
-                        ? d
-                        : {
-                            Info1: "no data",
-                            Info2: "no data",
-                            Info3: "no data"
-                          };
 
                       let tooltipContent = "";
                       if (d) {
+                        const { Info1, Info2, Info3 } = d;
                         tooltipContent =
                           "Country: " +
                           NAME +
